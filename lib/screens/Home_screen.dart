@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
                   Navigator.pushNamed(context, '/login');
                 },
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.blue), // Color de fondo azul
+                  backgroundColor: MaterialStateProperty.all<Color>(Colors.green), // Color de fondo azul
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0), // Ajusta el radio del borde según sea necesario
@@ -50,7 +50,19 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: Text('Iniciar!!'),
+                
+                child: Text('Inicio'),
+                
+
+
+
+
+
+
+
+
+
+
               ),
             ],
           ),
