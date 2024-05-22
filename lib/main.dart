@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 //import 'firebase_options.dart';
 
 import 'package:biciqrapp/screens/login_screen.dart';
+import 'package:biciqrapp/screens/register_screen.dart';
 
   //para la conexion a firebase
   //WidgetsFlutterBinding.ensureInitialized();
@@ -12,16 +13,14 @@ import 'package:biciqrapp/screens/login_screen.dart';
    // options: DefaultFirebaseOptions.currentPlatform,
   //);
 
-  void main() {
-    runApp(MyApp());
-  }
-
-  class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-  return MaterialApp(
-  title: 'Tu App',
-  home: LoginScreen(), // Navega a la pantalla de inicio de sesión
-  );
-  }
-  }
+void main() {
+  runApp(MaterialApp(
+    title: 'BiciQrApp',
+    initialRoute: '/',
+    routes: {
+      '/': (context) => LoginScreen(),
+      //'/home': (context) => HomeScreen(), // Asegúrate de tener definida esta pantalla
+      '/register': (context) => RegisterScreen(), // La pantalla de registro
+    },
+  ));
+}

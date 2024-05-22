@@ -113,6 +113,25 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Text('Iniciar Sesión'),
                           ),
                           SizedBox(height: 20),
+
+
+                          //Este texto sirve como boton para enviar a la pagina de registro
+                          TextButton(
+                            onPressed: () {
+                               Navigator.pushNamed(context, '/register');
+                            },
+
+                            child: Text(
+                              'Registrarse',
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 20),
+
                         ],
                       ),
                     ),
