@@ -16,7 +16,7 @@ import 'package:biciqrapp/screens/Home_screen.dart';
 
 void main() {
   runApp(MaterialApp(
-    title: 'BiciQrApp',
+    title: 'WissenQR',
     initialRoute: '/home',
     //las rutas
     routes: {
