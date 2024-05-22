@@ -5,7 +5,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BiciQrApp'),
+        title: Text('WissenQR'),
       ),
       body: Center(
         child: Padding(
@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Text(
-                '¡Asegura tu bicicleta con un simple escaneo! Genera tu código QR personalizado y mantén tu bici siempre identificada.',
+                '¡Asegura tus Objetos con un simple escaneo! Genera tu código QR personalizado y mantén tus siempre identificados!.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 18.0, // Tamaño de fuente
