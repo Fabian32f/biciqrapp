@@ -21,7 +21,7 @@ void main() {
     //las rutas
     routes: {
       '/login': (context) => LoginScreen(),
-      '/home': (context) => HomeScreen(), // Asegúrate de tener definida esta pantalla
+      '/home': (context) => HomeScreen(),
       '/register': (context) => RegisterScreen(), // La pantalla de registro
     },
   ));

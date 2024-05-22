@@ -9,6 +9,7 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>(); // Clave para el formulario
+  final _nombreController = TextEditingController();
   final _matriculaController = TextEditingController();
   final _semestreController = TextEditingController();
   final _grupoController = TextEditingController();
@@ -85,6 +86,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                 ),
+
+                SizedBox(height: 20),
+                _buildTextField(
+                  controller: _nombreController,
+                  label: 'Nombre',
+                ),
+
+
                 SizedBox(height: 20),
                 _buildTextField(
                   controller: _matriculaController,

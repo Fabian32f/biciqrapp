@@ -29,12 +29,26 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bienvenido a BiciQrApp'),
+        title: Text('Bienvenido a WissenQR',
+          style: TextStyle(
+            shadows: [
+              Shadow(
+                blurRadius: 10.0,
+                color: Colors.black,
+                offset: Offset(2.0, 2.0),
+              ),
+            ],
+          ),
+
+        ),
+
+        backgroundColor: Colors.blue,
       ),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
             children: <Widget>[
+              SizedBox(height: 20,),
               ClipRRect(
                 borderRadius: BorderRadius.circular(15.0),
                 child: SizedBox(
