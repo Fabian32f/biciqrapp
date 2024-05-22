@@ -17,8 +17,8 @@ class HomeScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15.0),
                 child: Image.asset(
                   'assets/logo.jpg',
-                  width: 200.0, // Ajusta el ancho según tu preferencia
-                  height: 200.0, // Ajusta la altura según tu preferencia
+                  width: 300.0, // Ajusta el ancho según tu preferencia
+                  height: 300.0, // Ajusta la altura según tu preferencia
                 ),
               ),
               SizedBox(height: 20),
