@@ -27,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _iniciarSesion(String username, String password) async {
     // Simula la validación de credenciales (reemplaza con tu lógica real)
-    if (username == 'Fabian' && password == '123456') {
+    if (username == 'Fabian' && password == '1111') {
       // Credenciales válidas, navega a la pantalla principal
       Navigator.pushReplacementNamed(context, '/home');
     } else {
