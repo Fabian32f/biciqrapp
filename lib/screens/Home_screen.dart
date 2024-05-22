@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Text(
-                '¡Asegura tus Objetos con un simple escaneo! Genera tu código QR personalizado y mantén tus siempre identificados!.',
+                '¡Asegura tus Objetos con un simple escaneo! Genera tu código QR personalizado y mantén tus siempre objetos siempre identificados!.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 18.0, // Tamaño de fuente
