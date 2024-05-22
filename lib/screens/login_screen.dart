@@ -16,7 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
     // Simula la validación de credenciales (reemplaza con tu lógica real)
     if (username == 'Fabian1' && password == '2222') {
       // Credenciales válidas, navega a la pantalla principal
-      Navigator.pushReplacementNamed(context, '/home');
+      Navigator.pushReplacementNamed(context, '/dashboard');
     } else {
       // Credenciales no válidas, muestra un mensaje de error
       ScaffoldMessenger.of(context).showSnackBar(
