@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:biciqrapp/screens/login_screen.dart';
 import 'package:biciqrapp/screens/register_screen.dart';
+import 'package:biciqrapp/screens/Home_screen.dart';
 
   //para la conexion a firebase
   //WidgetsFlutterBinding.ensureInitialized();
@@ -16,10 +17,11 @@ import 'package:biciqrapp/screens/register_screen.dart';
 void main() {
   runApp(MaterialApp(
     title: 'BiciQrApp',
-    initialRoute: '/',
+    initialRoute: '/home',
+    //las rutas
     routes: {
-      '/': (context) => LoginScreen(),
-      //'/home': (context) => HomeScreen(), // Asegúrate de tener definida esta pantalla
+      '/login': (context) => LoginScreen(),
+      '/home': (context) => HomeScreen(), // Asegúrate de tener definida esta pantalla
       '/register': (context) => RegisterScreen(), // La pantalla de registro
     },
   ));
