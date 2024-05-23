@@ -30,11 +30,11 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(height: 20),
             CircleAvatar(
               radius: 80,
-              backgroundImage: AssetImage('assets/user_avatar.jpg'),
+              backgroundImage: AssetImage('assets/foto.png'),
             ),
             SizedBox(height: 20),
             Text(
-              'Nombre de Usuario',
+              'Misraim',
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
@@ -42,10 +42,10 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
-            buildInfoTile('Matrícula', '12345678'),
-            buildInfoTile('Semestre', '4to Semestre'),
-            buildInfoTile('Grupo', 'A'),
-            buildInfoTile('Número de Contacto', '+52 123 456 7890'),
+            buildInfoTile('Matrícula', '221k0243'),
+            buildInfoTile('Semestre', '4 semestre'),
+            buildInfoTile('Grupo', 'ADMIN A'),
+            buildInfoTile('Número de Contacto', '9838090970'),
           ],
         ),
       ),

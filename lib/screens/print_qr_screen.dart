@@ -34,7 +34,7 @@ class _PrintQRScreenState extends State<PrintQRScreen> {
               TextField(
                 controller: _nameController,
                 decoration: InputDecoration(
-                  labelText: 'Nombre',
+                  labelText: 'NombreUsuario',
                 ),
               ),
               SizedBox(height: 16.0),

@@ -37,7 +37,7 @@ class DashboardScreen extends StatelessWidget {
         },
           child: CircleAvatar(
             radius: 80,
-            backgroundImage: AssetImage('assets/user_avatar.jpg'),
+            backgroundImage: AssetImage('assets/foto.png'),
           ),
       ),
           SizedBox(height: 10),
