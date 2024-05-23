@@ -81,20 +81,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 50.0), // 20 cm (200 dp) padding on each side
                   child: Center(
                     child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0), // Ejemplo de radio de 10 píxeles
-                        border: Border.all(
-                          color: Colors.black, // Ejemplo de color azul
-                          width: 2.0,
-                        ),
-                        color: Colors.blueAccent[400], // Ejemplo de color
-                      ),
+                     
                       child: Column(
                         children: <Widget>[
                           _buildTextField(
                             controller: _usernameController,
                             label: 'Nombre de usuario',
-                            fillColor: Colors.black26,
+                            fillColor: Colors.white,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Ingresa un nombre de usuario';
@@ -106,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           _buildTextField(
                             controller: _passwordController,
                             label: 'Contraseña',
-                            fillColor: Colors.white10,
+                            fillColor: Colors.white,
                             obscureText: true,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
