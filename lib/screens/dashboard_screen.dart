@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'profile_screen.dart'; // Importa el archivo de la pantalla de perfil
 import 'scanner_screen.dart'; // Importa el archivo de la pantalla de escáner
 import 'print_qr_screen.dart'; // Importa el archivo de la pantalla de impresión de QR
+import 'print_qr_screen.dart'; // Importa la pantalla de generación de QR
+
 
 class DashboardScreen extends StatelessWidget {
   @override
@@ -78,7 +80,11 @@ class DashboardScreen extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/print_qr'); // Navega a la página de imprimir QR
+                  //Navigator.pushNamed(context, '/print_qr'); // Navega a la página de imprimir QR
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PrintQRScreen()),
+                  );
                 },
                 child: Column(
                   children: <Widget>[

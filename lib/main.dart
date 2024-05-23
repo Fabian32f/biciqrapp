@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false, // Desactiva el banner de debug
       title: 'WissenQR',
       initialRoute: '/home',
       routes: {
