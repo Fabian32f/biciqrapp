@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -14,6 +17,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _semestreController = TextEditingController();
   final _grupoController = TextEditingController();
   final _contactoController = TextEditingController();
+  final _passwordController = TextEditingController(); // Controlador para la contraseña
   PickedFile? _profileImage;
 
   Future<void> _pickImage() async {
@@ -22,6 +26,57 @@ class _RegisterScreenState extends State<RegisterScreen> {
     setState(() {
       _profileImage = pickedImage;
     });
+  }
+
+  Future<void> _registerUser() async {
+    if (_formKey.currentState!.validate()) {
+      //Codigo para subir la imagen
+
+      String? imageUrl;
+      if (_profileImage != null) {
+        try {
+          // Subir imagen a Firebase Storage
+          File file = File(_profileImage!.path);
+          Reference ref = FirebaseStorage.instance.ref().child('profile_images/${_nombreController.text}_${DateTime.now().millisecondsSinceEpoch}');
+          UploadTask uploadTask = ref.putFile(file);
+          TaskSnapshot snapshot = await uploadTask;
+          imageUrl = await snapshot.ref.getDownloadURL();
+        } catch (e) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Error al subir la imagen: $e')),
+          );
+          return;
+        }
+      }
+
+
+
+      try {
+        await FirebaseFirestore.instance.collection('users').add({
+          'nombre': _nombreController.text,
+          'matricula': _matriculaController.text,
+          'semestre': _semestreController.text,
+          'grupo': _grupoController.text,
+          'contacto': _contactoController.text,
+          'password': _passwordController.text, // Añadir la contraseña
+          'profileImageUrl': imageUrl,
+        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Registro exitoso')),
+        );
+        // Después de mostrar el mensaje de registro exitoso, navega al inicio de sesión
+        Navigator.pushReplacementNamed(context, '/login');
+
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error al registrar: $e')),
+        );
+      }
+
+
+
+
+    }
   }
 
   @override
@@ -86,14 +141,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                 ),
-
                 SizedBox(height: 20),
                 _buildTextField(
                   controller: _nombreController,
                   label: 'Nombre',
                 ),
-
-
                 SizedBox(height: 20),
                 _buildTextField(
                   controller: _matriculaController,
@@ -115,16 +167,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   label: 'Número de contacto',
                 ),
                 SizedBox(height: 20),
+                _buildTextField(
+                  controller: _passwordController,
+                  label: 'Contraseña',
+                ),
+                SizedBox(height: 20),
                 Center(
                   child: ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        // Aquí se puede manejar la lógica de registro
-                      }
-                    },
+                    onPressed: _registerUser,
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
-                      padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0)),
+                      backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.green),
+                      padding: MaterialStateProperty.all<EdgeInsets>(
+                          EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 15.0)),
                       textStyle: MaterialStateProperty.all<TextStyle>(
                         TextStyle(
                           fontSize: 16.0,
@@ -161,7 +217,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
             width: 2.0,
           ),
         ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+        contentPadding:
+        EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {

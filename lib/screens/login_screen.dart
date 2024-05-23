@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart'; // Para la validación de entrada
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -13,17 +14,33 @@ class _LoginScreenState extends State<LoginScreen> {
 
   // Código de la función de inicio de sesión
   void _iniciarSesion(String username, String password) async {
-    // Simula la validación de credenciales (reemplaza con tu lógica real)
-    if (username == 'Fabian1' && password == '2222') {
-      // Credenciales válidas, navega a la pantalla principal
-      Navigator.pushReplacementNamed(context, '/dashboard');
-    } else {
-      // Credenciales no válidas, muestra un mensaje de error
+
+    try {
+      // Consulta Firestore para verificar las credenciales
+      final querySnapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .where('nombre', isEqualTo: username)
+          .where('password', isEqualTo: password)
+          .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        // Credenciales válidas, navega al dashboard
+        Navigator.pushReplacementNamed(context, '/dashboard');
+      } else {
+        // Credenciales no válidas, muestra un mensaje de error
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Nombre de usuario o contraseña incorrectos')),
+        );
+      }
+
+    } catch (e) {
+      print('Error de inicio de sesión: $e');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Nombre de usuario o contraseña incorrectos')),
+        SnackBar(content: Text('Error al iniciar sesión')),
       );
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
